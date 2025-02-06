@@ -1,0 +1,23 @@
+name: Test Skip
+
+on: push
+
+jobs:
+  start:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "start"
+
+  middle:
+    needs: [start]
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This should never run"
+
+  finish:
+    needs: [middle]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - run: echo "Finish job"
