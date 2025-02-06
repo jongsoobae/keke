@@ -1,0 +1,20 @@
+on: push
+
+jobs:
+  start:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "start"
+
+  middle:
+    needs: start
+    runs-on: ubuntu-latest
+    if: false
+    steps:
+      - run: echo "middle"
+
+  finish:
+    needs: middle
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "finish"
